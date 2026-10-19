@@ -89,6 +89,7 @@ export default function ApplicationForm({ job, publicKey, biddingPhase = "commit
   const [scoreWarning, setScoreWarning] = useState<string | null>(null);
   const [scoring, setScoring] = useState(false);
 
+
   // Issue #152 — enforce 50-word minimum on the proposal.
   const wordCount = proposal.trim() === "" ? 0 : proposal.trim().split(/\s+/).length;
   const MIN_WORDS = 50;
@@ -211,7 +212,6 @@ export default function ApplicationForm({ job, publicKey, biddingPhase = "commit
         setSubmitStatus("idle");
       }
       onRevert?.();
-      setSubmitted(false);
       toast.error("Failed to submit application. Please try again.");
     } finally {
       submittingRef.current = false;
